@@ -1,6 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 const AboutFuria = () => {
+  // Adicionar a keyframe animation ao carregar o componente
+  useEffect(() => {
+    // Cria um elemento de estilo
+    const styleEl = document.createElement('style');
+    // Define a animação
+    const animationCss = `
+      @keyframes logoScale {
+        0% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.8;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .animate-logo-pulse {
+        animation: logoScale 2s infinite ease-in-out;
+      }
+    `;
+    styleEl.textContent = animationCss;
+    // Adiciona ao head
+    document.head.appendChild(styleEl);
+    
+    // Limpa ao desmontar o componente
+    return () => {
+      document.head.removeChild(styleEl);
+    };
+  }, []);
+
   return (
     <section id="about" className="py-28 bg-gradient-to-b from-black to-furia-darkgray relative">
       {/* Elementos decorativos de fundo */}
@@ -51,12 +85,6 @@ const AboutFuria = () => {
                 <p className="text-sm mt-2">Atletas</p>
               </div>
             </div>
-            
-            <div className="flex flex-wrap gap-6">
-              <a href="#cs" className="px-8 py-3 bg-gradient-to-r from-furia-gold to-yellow-600 text-black font-bold rounded-md hover:from-yellow-600 hover:to-furia-gold transition-all duration-300">CS2</a>
-              <a href="#valorant" className="px-8 py-3 bg-gradient-to-r from-furia-gold to-yellow-600 text-black font-bold rounded-md hover:from-yellow-600 hover:to-furia-gold transition-all duration-300">VALORANT</a>
-              <a href="#king-league" className="px-8 py-3 bg-gradient-to-r from-furia-gold to-yellow-600 text-black font-bold rounded-md hover:from-yellow-600 hover:to-furia-gold transition-all duration-300">KING LEAGUE</a>
-            </div>
           </div>
           
           <div className="order-1 md:order-2 flex justify-center">
@@ -74,7 +102,11 @@ const AboutFuria = () => {
               {/* Logo central */}
               <div className="w-full h-full flex items-center justify-center bg-black border-4 border-furia-gold rounded-full overflow-hidden z-10 relative group-hover:border-white transition-colors duration-500">
                 <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-black"></div>
-                <span className="font-rajdhani font-bold text-5xl md:text-6xl text-furia-gold z-10 group-hover:scale-110 transition-transform duration-500">FURIA</span>
+                <img 
+                  src="/images/logo_furia.png" 
+                  alt="Logo FURIA" 
+                  className="w-3/4 h-3/4 object-contain z-10 group-hover:scale-110 transition-transform duration-500 animate-logo-pulse"
+                />
               </div>
             </div>
           </div>
