@@ -113,25 +113,70 @@ const AboutFuria = () => {
         </div>
         
         {/* Seção de valores */}
-        <div className="mt-32">
-          <h3 className="text-2xl md:text-3xl font-rajdhani font-bold mb-14 text-center text-furia-gold">
-            NOSSOS VALORES
+        <div className="mt-32 relative">
+          {/* Elementos decorativos de fundo */}
+          <div className="absolute -top-20 -right-20 w-64 h-64 bg-furia-gold/5 rounded-full filter blur-3xl"></div>
+          <div className="absolute -bottom-20 -left-20 w-80 h-80 bg-furia-gold/5 rounded-full filter blur-3xl"></div>
+          
+          <h3 className="text-2xl md:text-3xl font-rajdhani font-bold mb-16 text-center text-furia-gold relative inline-block w-full">
+            <span className="relative z-10">NOSSOS VALORES</span>
+            <div className="absolute -bottom-4 left-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-furia-gold to-transparent transform -translate-x-1/2"></div>
+            <div className="absolute -bottom-4 left-1/2 w-16 h-1 bg-furia-gold transform -translate-x-1/2 animate-pulse" style={{animationDuration: '2s'}}></div>
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div className="bg-black/40 p-8 rounded-lg border border-furia-gold/20 hover:border-furia-gold/50 transition-all">
-              <h4 className="text-xl font-bold mb-5 text-furia-gold">EXCELÊNCIA</h4>
-              <p className="text-gray-300">Buscamos constantemente superar limites, com metodologia e dedicação para alcançar o mais alto nível em tudo o que fazemos.</p>
+            <div className="bg-gradient-to-br from-black/80 to-black/40 p-10 rounded-lg border-l-4 border-furia-gold shadow-lg hover:shadow-furia-gold/20 transition-all duration-500 group relative overflow-hidden transform hover:-translate-y-1">
+              <div className="absolute inset-0 bg-gradient-to-br from-furia-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-furia-gold/5 rounded-full -mt-10 -mr-10"></div>
+              
+              <div className="bg-furia-gold/10 rounded-full p-3 w-14 h-14 flex items-center justify-center mb-6 group-hover:bg-furia-gold/20 transition-all duration-500">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-furia-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
+              </div>
+              
+              <h4 className="text-2xl font-bold mb-5 text-furia-gold">EXCELÊNCIA</h4>
+              <p className="text-gray-300 relative z-10 leading-relaxed">
+                Não jogamos apenas para participar — dominamos para redefinir. 
+                Nossa metodologia científica e treinamento intensivo transformam talento em supremacia competitiva. 
+                Cada detalhe, cada segundo, cada decisão nos aproxima da perfeição que perseguimos incansavelmente.
+              </p>
             </div>
             
-            <div className="bg-black/40 p-8 rounded-lg border border-furia-gold/20 hover:border-furia-gold/50 transition-all">
-              <h4 className="text-xl font-bold mb-5 text-furia-gold">PAIXÃO</h4>
-              <p className="text-gray-300">A paixão pelo que fazemos é nosso combustível diário. Defendemos nossas cores com orgulho e comprometimento.</p>
+            <div className="bg-gradient-to-br from-black/80 to-black/40 p-10 rounded-lg border-l-4 border-furia-gold shadow-lg hover:shadow-furia-gold/20 transition-all duration-500 group relative overflow-hidden transform hover:-translate-y-1">
+              <div className="absolute inset-0 bg-gradient-to-br from-furia-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-furia-gold/5 rounded-full -mt-10 -mr-10"></div>
+              
+              <div className="bg-furia-gold/10 rounded-full p-3 w-14 h-14 flex items-center justify-center mb-6 group-hover:bg-furia-gold/20 transition-all duration-500">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-furia-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </div>
+              
+              <h4 className="text-2xl font-bold mb-5 text-furia-gold">PAIXÃO</h4>
+              <p className="text-gray-300 relative z-10 leading-relaxed">
+                Nossa chama interior queima com intensidade feroz. 
+                É esse fogo que transforma obstáculos em combustível para nossa ascensão. 
+                Cada competição carrega o peso de nossa nação, cada vitória celebra a garra brasileira que corre em nossas veias digital e emocionalmente.
+              </p>
             </div>
             
-            <div className="bg-black/40 p-8 rounded-lg border border-furia-gold/20 hover:border-furia-gold/50 transition-all">
-              <h4 className="text-xl font-bold mb-5 text-furia-gold">INOVAÇÃO</h4>
-              <p className="text-gray-300">Estamos sempre na vanguarda, adotando novas tecnologias e abordagens para revolucionar o cenário competitivo.</p>
+            <div className="bg-gradient-to-br from-black/80 to-black/40 p-10 rounded-lg border-l-4 border-furia-gold shadow-lg hover:shadow-furia-gold/20 transition-all duration-500 group relative overflow-hidden transform hover:-translate-y-1">
+              <div className="absolute inset-0 bg-gradient-to-br from-furia-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-furia-gold/5 rounded-full -mt-10 -mr-10"></div>
+              
+              <div className="bg-furia-gold/10 rounded-full p-3 w-14 h-14 flex items-center justify-center mb-6 group-hover:bg-furia-gold/20 transition-all duration-500">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-furia-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              
+              <h4 className="text-2xl font-bold mb-5 text-furia-gold">INOVAÇÃO</h4>
+              <p className="text-gray-300 relative z-10 leading-relaxed">
+                Revolucionamos enquanto outros imitam. 
+                Nossa visão disruptiva quebra paradigmas e reescreve as regras do jogo. 
+                Combinamos tecnologia de ponta, estratégia visionária e audácia criativa para forjar um legado que não apenas acompanha o futuro — nós o criamos.
+              </p>
             </div>
           </div>
         </div>
