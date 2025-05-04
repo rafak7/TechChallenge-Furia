@@ -2,13 +2,15 @@ import React from 'react';
 import PlayerCard from './PlayerCard';
 
 const CSTeam = () => {
-  // Simulated CS players data
+  // Dados atualizados do time da FURIA
   const players = [
     {
       name: "Gabriel Toledo",
       nickname: "FalleN",
       role: "IGL / AWPer",
-      image: "https://images.unsplash.com/photo-1549068106-b024baf5062d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-cs/furia-fallen.webp",
       stats: [
         { name: "K/D Ratio", value: 1.15, max: 2 },
         { name: "Headshot %", value: 48, max: 100 },
@@ -17,51 +19,59 @@ const CSTeam = () => {
       ]
     },
     {
+      name: "Yuri Santos",
+      nickname: "yuurih",
+      role: "Rifler",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-cs/furia-yurih.webp",
+      stats: [
+        { name: "K/D Ratio", value: 1.22, max: 2 },
+        { name: "Headshot %", value: 62, max: 100 },
+        { name: "Opening Kills", value: 75, max: 100 },
+        { name: "Clutch Rate", value: 7.5, max: 10 }
+      ]
+    },
+    {
+      name: "Mareks Gaļinskis",
+      nickname: "YEKINDAR",
+      role: "Entry Fragger",
+      country: "Latvia",
+      countryCode: "LV",
+      image: "/images/players-cs/furia-yekindar.webp",
+      stats: [
+        { name: "K/D Ratio", value: 1.18, max: 2 },
+        { name: "Headshot %", value: 52, max: 100 },
+        { name: "Entry Kills", value: 92, max: 100 },
+        { name: "Clutch Rate", value: 6.8, max: 10 }
+      ]
+    },
+    {
       name: "Kaike Cerato",
       nickname: "KSCERATO",
       role: "Rifler",
-      image: "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-cs/furia-ks.webp",
       stats: [
         { name: "K/D Ratio", value: 1.25, max: 2 },
         { name: "Headshot %", value: 65, max: 100 },
-        { name: "Opening Kills", value: 70, max: 100 },
+        { name: "Impact Rating", value: 82, max: 100 },
         { name: "Clutch Rate", value: 7, max: 10 }
       ]
     },
     {
-      name: "Andrei Piovezan",
-      nickname: "arT",
-      role: "Entry Fragger",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
-      stats: [
-        { name: "K/D Ratio", value: 1.05, max: 2 },
-        { name: "Headshot %", value: 42, max: 100 },
-        { name: "Entry Kills", value: 90, max: 100 },
-        { name: "Clutch Rate", value: 5, max: 10 }
-      ]
-    },
-    {
-      name: "André Abreu",
-      nickname: "drop",
+      name: "Danil Golubenko",
+      nickname: "molodoy",
       role: "Support",
-      image: "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      country: "Kazakhstan",
+      countryCode: "KZ",
+      image: "/images/players-cs/furia-molodoy.webp",
       stats: [
         { name: "K/D Ratio", value: 1.10, max: 2 },
-        { name: "Headshot %", value: 55, max: 100 },
-        { name: "Utility Damage", value: 80, max: 100 },
-        { name: "Clutch Rate", value: 6.5, max: 10 }
-      ]
-    },
-    {
-      name: "Rafael Costa",
-      nickname: "saffee",
-      role: "AWPer",
-      image: "https://images.unsplash.com/photo-1531891437562-4301cf35b7e4?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
-      stats: [
-        { name: "K/D Ratio", value: 1.20, max: 2 },
-        { name: "Headshot %", value: 38, max: 100 },
-        { name: "AWP Kills", value: 92, max: 100 },
-        { name: "Clutch Rate", value: 7, max: 10 }
+        { name: "Headshot %", value: 48, max: 100 },
+        { name: "Utility Damage", value: 78, max: 100 },
+        { name: "Clutch Rate", value: 6.2, max: 10 }
       ]
     }
   ];
@@ -84,6 +94,8 @@ const CSTeam = () => {
               name={player.name}
               nickname={player.nickname}
               role={player.role}
+              country={player.country}
+              countryCode={player.countryCode}
               image={player.image}
               stats={player.stats}
               team="cs"
