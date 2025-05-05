@@ -16,6 +16,8 @@ const FanSection = () => {
   const [formData, setFormData] = useState({
     nome_completo: '',
     email: '',
+    cpf: '',
+    endereco: '',
     time_favorito: '',
     senha: '',
     confirmarSenha: '',
@@ -267,7 +269,7 @@ const FanSection = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.nome_completo || !formData.email || !formData.time_favorito || !formData.senha) {
+    if (!formData.nome_completo || !formData.email || !formData.time_favorito || !formData.senha || !formData.cpf || !formData.endereco) {
       toast.error("Por favor, preencha todos os campos obrigatórios.");
       return;
     }
@@ -282,6 +284,13 @@ const FanSection = () => {
       return;
     }
 
+    // Validação básica de CPF (apenas verificação de formato)
+    const cpfRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$|^\d{11}$/;
+    if (!cpfRegex.test(formData.cpf)) {
+      toast.error("Por favor, digite um CPF válido no formato 000.000.000-00 ou 00000000000.");
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -293,6 +302,8 @@ const FanSection = () => {
           data: {
             nome_completo: formData.nome_completo,
             time_favorito: formData.time_favorito,
+            cpf: formData.cpf,
+            endereco: formData.endereco
           }
         }
       });
@@ -319,6 +330,8 @@ const FanSection = () => {
           setFormData({
             nome_completo: '',
             email: '',
+            cpf: '',
+            endereco: '',
             time_favorito: '',
             senha: '',
             confirmarSenha: '',
@@ -337,26 +350,23 @@ const FanSection = () => {
         id: authData.user?.id,
         nome_completo: formData.nome_completo,
         email: formData.email,
+        cpf: formData.cpf,
+        endereco: formData.endereco,
         time_favorito: formData.time_favorito,
       };
 
       // Se tiver um documento, converter para base64 e incluir
+      let documentoBytes = null;
       if (documento) {
         const fileBuffer = await documento.arrayBuffer();
-        const base64String = btoa(
-          new Uint8Array(fileBuffer).reduce(
-            (data, byte) => data + String.fromCharCode(byte),
-            ''
-          )
-        );
-        
-        // @ts-expect-error - Adicionamos o documento em base64
-        userData.documento = base64String;
+        documentoBytes = new Uint8Array(fileBuffer);
+        // @ts-expect-error - Adicionamos o documento em bytea format
+        userData.documento = documentoBytes;
       }
 
-      // Inserir dados adicionais no Supabase (tabela personalizada)
+      // Inserir dados adicionais no Supabase (nova tabela personalizada)
       const { error: profileError } = await supabase
-        .from('usuarios')
+        .from('usuarios_teste')
         .insert([userData]);
 
       if (profileError) throw profileError;
@@ -370,6 +380,8 @@ const FanSection = () => {
       setFormData({
         nome_completo: '',
         email: '',
+        cpf: '',
+        endereco: '',
         time_favorito: '',
         senha: '',
         confirmarSenha: '',
@@ -597,6 +609,32 @@ const FanSection = () => {
                               onChange={handleChange}
                               required 
                               placeholder="exemplo@email.com" 
+                              className="bg-furia-darkgray/70 border-furia-gold/20 focus:border-furia-gold h-10 font-inter text-sm placeholder:text-gray-500" 
+                            />
+                          </div>
+                          
+                          <div className="space-y-1.5">
+                            <Label htmlFor="cpf" className="text-xs font-medium text-gray-300">CPF</Label>
+                            <Input 
+                              id="cpf" 
+                              type="text" 
+                              value={formData.cpf}
+                              onChange={handleChange}
+                              required 
+                              placeholder="000.000.000-00" 
+                              className="bg-furia-darkgray/70 border-furia-gold/20 focus:border-furia-gold h-10 font-inter text-sm placeholder:text-gray-500" 
+                            />
+                          </div>
+                          
+                          <div className="space-y-1.5">
+                            <Label htmlFor="endereco" className="text-xs font-medium text-gray-300">Endereço</Label>
+                            <Input 
+                              id="endereco" 
+                              type="text" 
+                              value={formData.endereco}
+                              onChange={handleChange}
+                              required
+                              placeholder="Rua, número, bairro, cidade/UF" 
                               className="bg-furia-darkgray/70 border-furia-gold/20 focus:border-furia-gold h-10 font-inter text-sm placeholder:text-gray-500" 
                             />
                           </div>
