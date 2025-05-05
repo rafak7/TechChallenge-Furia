@@ -2,13 +2,15 @@ import React from 'react';
 import PlayerCard from './PlayerCard';
 
 const ValorantTeam = () => {
-  // Simulated Valorant players data
+  // Dados atualizados do time de Valorant da FURIA
   const players = [
     {
-      name: "Agustin Lozano",
-      nickname: "Nozwerr",
+      name: "Khalil Schmidt Faour Auad",
+      nickname: "khalil",
       role: "Duelist",
-      image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-valorant/valorant-khalil.jpg",
       stats: [
         { name: "K/D Ratio", value: 1.22, max: 2 },
         { name: "Headshot %", value: 58, max: 100 },
@@ -17,10 +19,12 @@ const ValorantTeam = () => {
       ]
     },
     {
-      name: "Gabriel Amaral",
-      nickname: "qck",
+      name: "Ilan Eloy",
+      nickname: "havoc",
       role: "Controller",
-      image: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-valorant/valorant-havoc.jpg",
       stats: [
         { name: "K/D Ratio", value: 1.15, max: 2 },
         { name: "Utility Usage", value: 92, max: 100 },
@@ -29,34 +33,40 @@ const ValorantTeam = () => {
       ]
     },
     {
-      name: "Marina Sampaio",
-      nickname: "mari",
+      name: "Olavo Marcelo",
+      nickname: "heat",
       role: "Initiator",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-valorant/valorant-heat.jpg",
       stats: [
-        { name: "K/D Ratio", value: 1.10, max: 2 },
+        { name: "K/D Ratio", value: 1.28, max: 2 },
         { name: "Recon Efficiency", value: 85, max: 100 },
-        { name: "Kill Assists", value: 90, max: 100 },
-        { name: "Clutch Rate", value: 6, max: 10 }
-      ]
-    },
-    {
-      name: "Matheus Almeida",
-      nickname: "Mazin",
-      role: "Sentinel",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
-      stats: [
-        { name: "K/D Ratio", value: 1.05, max: 2 },
-        { name: "Site Defense", value: 95, max: 100 },
-        { name: "Trap Kills", value: 78, max: 100 },
+        { name: "Kill Assists", value: 87, max: 100 },
         { name: "Clutch Rate", value: 7.8, max: 10 }
       ]
     },
     {
-      name: "Daniel Flatery",
-      nickname: "DPH",
+      name: "Rafael Lima",
+      nickname: "raafa",
+      role: "Sentinel",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-valorant/valorant-raafa.jpg",
+      stats: [
+        { name: "K/D Ratio", value: 1.12, max: 2 },
+        { name: "Site Defense", value: 90, max: 100 },
+        { name: "Trap Kills", value: 78, max: 100 },
+        { name: "Clutch Rate", value: 7.2, max: 10 }
+      ]
+    },
+    {
+      name: "Luis Henrique",
+      nickname: "pryze",
       role: "IGL / Flex",
-      image: "https://images.unsplash.com/photo-1624561172888-ac93c696e10c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-valorant/valorant-pryze.jpg",
       stats: [
         { name: "K/D Ratio", value: 1.18, max: 2 },
         { name: "Team Support", value: 96, max: 100 },
@@ -84,6 +94,8 @@ const ValorantTeam = () => {
               name={player.name}
               nickname={player.nickname}
               role={player.role}
+              country={player.country}
+              countryCode={player.countryCode}
               image={player.image}
               stats={player.stats}
               team="valorant"
