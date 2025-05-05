@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Link, useNavigate } from 'react-router-dom';
-import { MessageSquare, Lock, LogOut, User } from 'lucide-react';
+import { MessageSquare, Lock, LogOut, UserCircle, Gem } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import {
   Tooltip,
@@ -18,11 +18,17 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
 import { toast } from 'sonner';
+import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 
 const Header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [userInfo, setUserInfo] = useState<{ email: string; nome_completo?: string } | null>(null);
+  const [userInfo, setUserInfo] = useState<{ 
+    email: string; 
+    nome_completo?: string; 
+    time_favorito?: string;
+    avatar_url?: string;
+  } | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,7 +41,9 @@ const Header = () => {
         // Obter informações do usuário
         setUserInfo({
           email: data.session.user.email || '',
-          nome_completo: data.session.user.user_metadata?.nome_completo
+          nome_completo: data.session.user.user_metadata?.nome_completo,
+          time_favorito: data.session.user.user_metadata?.time_favorito,
+          avatar_url: data.session.user.user_metadata?.avatar_url
         });
       }
       
@@ -51,7 +59,9 @@ const Header = () => {
       if (session) {
         setUserInfo({
           email: session.user.email || '',
-          nome_completo: session.user.user_metadata?.nome_completo
+          nome_completo: session.user.user_metadata?.nome_completo,
+          time_favorito: session.user.user_metadata?.time_favorito,
+          avatar_url: session.user.user_metadata?.avatar_url
         });
       } else {
         setUserInfo(null);
@@ -75,6 +85,46 @@ const Header = () => {
         description: "Tente novamente em alguns instantes."
       });
     }
+  };
+
+  // Função para obter as iniciais do nome
+  const getInitials = (name?: string): string => {
+    if (!name) return 'U';
+    return name
+      .split(' ')
+      .map(part => part.charAt(0))
+      .join('')
+      .toUpperCase()
+      .substring(0, 2);
+  };
+
+  // Função para determinar a cor do avatar com base no time favorito
+  const getAvatarColor = (time?: string): string => {
+    if (!time) return 'bg-furia-gold';
+    
+    switch (time) {
+      case 'cs':
+        return 'bg-gradient-to-br from-furia-gold to-amber-600';
+      case 'valorant':
+        return 'bg-gradient-to-br from-rose-600 to-furia-gold';
+      case 'king-league':
+        return 'bg-gradient-to-br from-purple-600 to-furia-gold';
+      default:
+        return 'bg-gradient-to-br from-furia-gold to-amber-400';
+    }
+  };
+
+  // Função para obter o nome do time
+  const getTeamName = (teamCode?: string): string => {
+    if (!teamCode) return '';
+    
+    const teams: Record<string, string> = {
+      'cs': 'Counter-Strike',
+      'valorant': 'Valorant',
+      'king-league': 'King League'
+    };
+    
+    return teams[teamCode] || '';
   };
 
   return (
@@ -113,21 +163,57 @@ const Header = () => {
               
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="outline" size="icon" className="border-furia-gold/50 ml-2 rounded-full bg-black hover:bg-gray-900">
-                    <User className="h-5 w-5 text-furia-gold" />
+                  <Button variant="outline" size="icon" className="border-furia-gold/50 ml-2 rounded-full bg-black hover:bg-gray-900 p-0 overflow-hidden hover:border-furia-gold hover:shadow-md hover:shadow-furia-gold/20 transition-all duration-300 scale-100 hover:scale-105">
+                    <Avatar className="h-10 w-10">
+                      <AvatarImage src={userInfo?.avatar_url || undefined} alt={userInfo?.nome_completo || "Usuário"} />
+                      <AvatarFallback className={getAvatarColor(userInfo?.time_favorito)}>
+                        {getInitials(userInfo?.nome_completo)}
+                      </AvatarFallback>
+                    </Avatar>
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="border-furia-gold/50 bg-black text-white">
-                  <DropdownMenuLabel className="text-furia-gold">
-                    {userInfo?.nome_completo || userInfo?.email}
-                  </DropdownMenuLabel>
-                  <DropdownMenuSeparator className="bg-furia-gold/30" />
+                <DropdownMenuContent className="border-furia-gold/50 bg-black/95 backdrop-blur-md text-white w-72 p-2 shadow-lg shadow-furia-gold/10 mt-1">
+                  <div className="flex items-start p-3 pb-3">
+                    <Avatar className="h-12 w-12 shrink-0">
+                      <AvatarImage src={userInfo?.avatar_url || undefined} alt={userInfo?.nome_completo || "Usuário"} />
+                      <AvatarFallback className={getAvatarColor(userInfo?.time_favorito)}>
+                        {getInitials(userInfo?.nome_completo)}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div className="ml-3 flex-1">
+                      <DropdownMenuLabel className="text-furia-gold font-rajdhani font-bold p-0 text-base">
+                        {userInfo?.nome_completo || "Furioso"}
+                      </DropdownMenuLabel>
+                      <p className="text-xs text-gray-400 break-words w-full">{userInfo?.email}</p>
+                      {userInfo?.time_favorito && (
+                        <div className="flex items-center mt-1">
+                          <Gem className="h-3 w-3 text-furia-gold mr-1" />
+                          <span className="text-xs text-furia-gold/80">
+                            Fã de {getTeamName(userInfo.time_favorito)}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                  
+                  <DropdownMenuSeparator className="bg-furia-gold/30 my-1" />
+                  
                   <DropdownMenuItem 
-                    className="cursor-pointer hover:bg-furia-gold/10 focus:bg-furia-gold/10"
+                    className="cursor-pointer hover:bg-furia-gold/20 focus:bg-furia-gold/20 rounded-md px-3 py-2 font-medium text-sm group transition-all duration-200"
+                    onClick={() => navigate('/perfil')}
+                  >
+                    <UserCircle className="h-4 w-4 mr-3 text-furia-gold group-hover:scale-110 transition-transform duration-200" />
+                    <span className="group-hover:text-furia-gold transition-colors duration-200">Meu Perfil</span>
+                  </DropdownMenuItem>
+                  
+                  <DropdownMenuSeparator className="bg-furia-gold/30 my-1" />
+                  
+                  <DropdownMenuItem 
+                    className="cursor-pointer hover:bg-red-900/30 focus:bg-red-900/30 rounded-md px-3 py-2 font-medium text-sm text-red-400 hover:text-red-300 transition-all duration-200 group"
                     onClick={handleLogout}
                   >
-                    <LogOut className="h-4 w-4 mr-2" />
-                    Deslogar
+                    <LogOut className="h-4 w-4 mr-3 group-hover:translate-x-[-2px] transition-transform duration-200" />
+                    <span className="group-hover:font-semibold transition-all duration-200">Deslogar</span>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
