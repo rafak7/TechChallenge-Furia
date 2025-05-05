@@ -11,46 +11,36 @@ const TeamSelector = ({ activeTeam }: TeamSelectorProps) => {
   const navigate = useNavigate();
 
   const handleTeamSelect = (team: string) => {
-    navigate(`/teams/${team}`);
+    if (team !== activeTeam) {
+      navigate(`/teams/${team}`);
+    }
   };
 
+  const teams = [
+    { id: 'cs', name: 'CS Team' },
+    { id: 'valorant', name: 'Valorant Team' },
+    { id: 'kings-league', name: 'Kings League Team' }
+  ];
+
   return (
-    <div className="flex flex-col sm:flex-row justify-center gap-4">
-      <Button 
-        onClick={() => handleTeamSelect('cs')}
-        className={`px-6 py-3 text-lg font-rajdhani flex items-center justify-between ${
-          activeTeam === 'cs' 
-            ? 'bg-furia-gold text-black hover:bg-furia-gold/90' 
-            : 'bg-furia-darkgray border border-furia-gold/30 hover:bg-furia-darkgray/70'
-        }`}
-      >
-        <span>CS Team</span>
-        <ChevronRight className={`ml-2 transition-transform ${activeTeam === 'cs' ? 'rotate-90' : ''}`} />
-      </Button>
-      
-      <Button 
-        onClick={() => handleTeamSelect('valorant')}
-        className={`px-6 py-3 text-lg font-rajdhani flex items-center justify-between ${
-          activeTeam === 'valorant' 
-            ? 'bg-furia-gold text-black hover:bg-furia-gold/90' 
-            : 'bg-furia-darkgray border border-furia-gold/30 hover:bg-furia-darkgray/70'
-        }`}
-      >
-        <span>Valorant Team</span>
-        <ChevronRight className={`ml-2 transition-transform ${activeTeam === 'valorant' ? 'rotate-90' : ''}`} />
-      </Button>
-      
-      <Button 
-        onClick={() => handleTeamSelect('kings-league')}
-        className={`px-6 py-3 text-lg font-rajdhani flex items-center justify-between ${
-          activeTeam === 'kings-league' 
-            ? 'bg-furia-gold text-black hover:bg-furia-gold/90' 
-            : 'bg-furia-darkgray border border-furia-gold/30 hover:bg-furia-darkgray/70'
-        }`}
-      >
-        <span>Kings League Team</span>
-        <ChevronRight className={`ml-2 transition-transform ${activeTeam === 'kings-league' ? 'rotate-90' : ''}`} />
-      </Button>
+    <div>
+      <h3 className="text-xl text-center text-furia-gold mb-4 font-rajdhani">Navegue entre nossos times profissionais</h3>
+      <div className="flex flex-col sm:flex-row justify-center gap-4">
+        {teams.map((team) => (
+          <Button 
+            key={team.id}
+            onClick={() => handleTeamSelect(team.id)}
+            className={`px-6 py-3 text-lg font-rajdhani flex items-center justify-between transition-all duration-300 ${
+              activeTeam === team.id 
+                ? 'bg-furia-gold text-black hover:bg-furia-gold/90 shadow-lg shadow-furia-gold/30 transform scale-105' 
+                : 'bg-furia-darkgray border border-furia-gold/30 hover:bg-furia-darkgray/70 hover:border-furia-gold'
+            }`}
+          >
+            <span>{team.name}</span>
+            <ChevronRight className={`ml-2 transition-transform duration-300 ${activeTeam === team.id ? 'rotate-90' : ''}`} />
+          </Button>
+        ))}
+      </div>
     </div>
   );
 };

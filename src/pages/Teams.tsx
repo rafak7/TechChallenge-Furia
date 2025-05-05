@@ -84,11 +84,11 @@ const Teams = () => {
     
     switch (teamId) {
       case 'cs':
-        return <CSTeam />;
+        return <div className="animate-fade-in"><CSTeam /></div>;
       case 'valorant':
-        return <ValorantTeam />;
+        return <div className="animate-fade-in"><ValorantTeam /></div>;
       case 'kings-league':
-        return <KingLeagueTeam />;
+        return <div className="animate-fade-in"><KingLeagueTeam /></div>;
       default:
         return null;
     }
@@ -245,8 +245,15 @@ const Teams = () => {
         )}
         
         <div className="container mx-auto px-4 py-10">
+          {/* Exibir seletor de times apenas quando um time estiver selecionado */}
+          {teamId && (
+            <div className="mb-12">
+              <TeamSelector activeTeam={activeTeam} />
+            </div>
+          )}
+          
           {currentTeam ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16 animate-fade-in">
               <div className="md:col-span-2" data-aos="fade-up" data-aos-delay="100">
                 <h2 className="text-2xl font-bold text-furia-white mb-4">Sobre o Time</h2>
                 <p className="text-furia-white/80 text-lg mb-6">
