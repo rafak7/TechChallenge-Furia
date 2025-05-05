@@ -1,70 +1,257 @@
 import React from 'react';
 import PlayerCard from './PlayerCard';
 
+interface KingsPlayer {
+  name: string;
+  nickname: string;
+  role: string;
+  country: string;
+  countryCode: string;
+  image: string;
+  stats: { name: string; value: number; max: number | null }[];
+  isWildcard?: boolean;
+  mvpJogo?: number;
+}
+
 const KingLeagueTeam = () => {
-  // Simulated Kings League players data
-  const players = [
+  // Dados reais da equipe Kings League da FURIA
+  const players: KingsPlayer[] = [
     {
-      name: "Carlos Ferreira",
-      nickname: "Fenômeno",
+      name: "Carlos Eduardo",
+      nickname: "Treinador",
+      role: "Treinador",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-kings/kings-lipao.webp",
+      stats: []
+    },
+    {
+      name: "Guilherme Monagatti",
+      nickname: "#9",
       role: "Atacante",
-      image: "https://images.unsplash.com/photo-1628890923662-2cb23c2e0cfe?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-kings/kings-guilherme.webp",
       stats: [
-        { name: "Gols", value: 18, max: 30 },
-        { name: "Assistências", value: 6, max: 20 },
-        { name: "Finalizações", value: 82, max: 100 },
-        { name: "Dribles", value: 8, max: 10 }
+        { name: "Jogos", value: 7, max: null },
+        { name: "Gols", value: 0, max: null },
+        { name: "Assist.", value: 0, max: null },
+        { name: "Amarelos", value: 0, max: null },
+        { name: "Vermelhos", value: 0, max: null }
       ]
     },
     {
-      name: "Rodrigo Santos",
-      nickname: "Maestro",
-      role: "Meio-Campo",
-      image: "https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      name: "Caio Gatroca",
+      nickname: "#3",
+      role: "Meia",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-kings/kings-caio.webp",
       stats: [
-        { name: "Gols", value: 7, max: 30 },
-        { name: "Assistências", value: 15, max: 20 },
-        { name: "Passes", value: 95, max: 100 },
-        { name: "Precisão", value: 9, max: 10 }
+        { name: "Jogos", value: 2, max: null },
+        { name: "Gols", value: 0, max: null },
+        { name: "Assist.", value: 0, max: null },
+        { name: "Amarelos", value: 0, max: null },
+        { name: "Vermelhos", value: 0, max: null }
       ]
     },
     {
-      name: "Pedro Alves",
-      nickname: "Muralha",
-      role: "Defensor",
-      image: "https://images.unsplash.com/photo-1639747280804-dd2d6b3d88ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
-      stats: [
-        { name: "Desarmes", value: 24, max: 30 },
-        { name: "Interceptações", value: 19, max: 20 },
-        { name: "Duelos Ganhos", value: 85, max: 100 },
-        { name: "Posicionamento", value: 9.2, max: 10 }
-      ]
-    },
-    {
-      name: "Felipe Martins",
-      nickname: "Pantera",
+      name: "Murillo Donato",
+      nickname: "#8",
       role: "Atacante",
-      image: "https://images.unsplash.com/photo-1610271340738-726e199f0258?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-kings/kings-murillo.webp",
       stats: [
-        { name: "Gols", value: 21, max: 30 },
-        { name: "Assistências", value: 4, max: 20 },
-        { name: "Finalizações", value: 88, max: 100 },
-        { name: "Velocidade", value: 9.5, max: 10 }
+        { name: "Jogos", value: 7, max: null },
+        { name: "Gols", value: 4, max: null },
+        { name: "Assist.", value: 1, max: null },
+        { name: "Amarelos", value: 0, max: null },
+        { name: "Vermelhos", value: 0, max: null }
       ]
     },
     {
-      name: "Lucas Gonçalves",
-      nickname: "Paredão",
+      name: "Ryan Lima",
+      nickname: "#77",
+      role: "Atacante",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-kings/kings-ryan.webp",
+      stats: [
+        { name: "Jogos", value: 8, max: null },
+        { name: "Gols", value: 1, max: null },
+        { name: "Assist.", value: 1, max: null },
+        { name: "Amarelos", value: 0, max: null },
+        { name: "Vermelhos", value: 0, max: null }
+      ]
+    },
+    {
+      name: "Matheus Ayosa",
+      nickname: "#1",
       role: "Goleiro",
-      image: "https://images.unsplash.com/photo-1597004897768-c223ef4270cd?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-kings/kings-matheus.webp",
       stats: [
-        { name: "Defesas", value: 26, max: 30 },
-        { name: "Jogos sem sofrer gols", value: 12, max: 20 },
-        { name: "Saídas de gol", value: 75, max: 100 },
-        { name: "Reflexos", value: 9.4, max: 10 }
+        { name: "Jogos", value: 3, max: null },
+        { name: "Gols sofridos", value: 6, max: null },
+        { name: "Proporção", value: 2.00, max: null },
+        { name: "Amarelos", value: 0, max: null },
+        { name: "Vermelhos", value: 0, max: null }
+      ]
+    },
+    {
+      name: "João Pelegrini",
+      nickname: "#22",
+      role: "Defesa",
+      country: "Brazil",
+      countryCode: "BR",
+        image: "/images/players-kings/kings-joao.webp",
+      stats: [
+        { name: "Jogos", value: 8, max: null },
+        { name: "Gols", value: 1, max: null },
+        { name: "Assist.", value: 0, max: null },
+        { name: "Amarelos", value: 2, max: null },
+        { name: "Vermelhos", value: 0, max: null }
+      ]
+    },
+    {
+      name: "Gabriel Pastuch",
+      nickname: "#7",
+      role: "Atacante",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-kings/kings-gabriel.webp",
+      stats: [
+        { name: "Jogos", value: 1, max: null },
+        { name: "Gols", value: 0, max: null },
+        { name: "Assist.", value: 0, max: null },
+        { name: "Amarelos", value: 0, max: null },
+        { name: "Vermelhos", value: 0, max: null }
+      ]
+    },
+    {
+      name: "Victor Hugo",
+      nickname: "#33",
+      role: "Goleiro",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-kings/kings-victor.webp",
+      stats: [
+        { name: "Jogos", value: 6, max: null },
+        { name: "Gols sofridos", value: 14, max: null },
+        { name: "Proporção", value: 2.33, max: null },
+        { name: "Amarelos", value: 0, max: null },
+        { name: "Vermelhos", value: 0, max: null }
+      ]
+    },
+    {
+      name: "Matheus Dedo",
+      nickname: "#14",
+      role: "Meia",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-kings/kings-dedo.webp",
+      stats: [
+        { name: "Jogos", value: 8, max: null },
+        { name: "Gols", value: 1, max: null },
+        { name: "Assist.", value: 5, max: null },
+        { name: "Amarelos", value: 0, max: null },
+        { name: "Vermelhos", value: 0, max: null }
       ]
     }
   ];
+
+  // Jogadores Wildcard
+  const wildcardPlayers: KingsPlayer[] = [
+    {
+      name: "Jeffinho",
+      nickname: "#12",
+      role: "Meia",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-kings/kings-jeffinho.webp",
+      stats: [
+        { name: "Jogos", value: 8, max: null },
+        { name: "Gols", value: 5, max: null },
+        { name: "Assist.", value: 3, max: null },
+        { name: "Amarelos", value: 0, max: null },
+        { name: "Vermelhos", value: 0, max: null }
+      ],
+      isWildcard: true
+    },
+    {
+      name: "Lipão",
+      nickname: "#10",
+      role: "Atacante",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-kings/kings-lipao.webp",
+      stats: [
+        { name: "Jogos", value: 8, max: null },
+        { name: "Gols", value: 7, max: null },
+        { name: "Assist.", value: 5, max: null },
+        { name: "Amarelos", value: 0, max: null },
+        { name: "Vermelhos", value: 0, max: null }
+      ],
+      isWildcard: true
+    },
+    {
+      name: "Leleti",
+      nickname: "#11",
+      role: "Atacante",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-kings/kings-leleti.webp",
+      stats: [
+        { name: "Jogos", value: 8, max: null },
+        { name: "Gols", value: 14, max: null },
+        { name: "Assist.", value: 6, max: null },
+        { name: "Amarelos", value: 0, max: null },
+        { name: "Vermelhos", value: 0, max: null }
+      ],
+      isWildcard: true,
+      // mvpJogo: 4
+    },
+    {
+      name: "Andrey Batata",
+      nickname: "#5",
+      role: "Meia",
+      country: "Brazil",
+      countryCode: "BR",
+      image: "/images/players-kings/kings-andrey.webp",
+      stats: [
+        { name: "Jogos", value: 0, max: null },
+        { name: "Gols", value: 0, max: null },
+        { name: "Assist.", value: 0, max: null },
+        { name: "Amarelos", value: 0, max: null },
+        { name: "Vermelhos", value: 0, max: null }
+      ],
+      isWildcard: true
+    }
+  ];
+
+  // Adicionar médias de rating dos jogadores
+  const playerRatings: Record<string, number | null> = {
+    "Carlos Eduardo": null, // Treinador não tem rating
+    "Guilherme Monagatti": 81,
+    "Caio Gatroca": 78,
+    "Murillo Donato": 80,
+    "Ryan Lima": 75,
+    "Matheus Ayosa": 78,
+    "João Pelegrini": 73,
+    "Gabriel Pastuch": 78,
+    "Victor Hugo": 79,
+    "Matheus Dedo": 73,
+    // Wildcards
+    "Jeffinho": 79,
+    "Lipão": null,
+    "Leleti": null,
+    "Andrey Batata": 78
+  };
+
+  // Combinar jogadores regulares e wildcards
+  const allPlayers = [...players, ...wildcardPlayers];
 
   return (
     <div className="animate-fade-in">
@@ -73,20 +260,25 @@ const KingLeagueTeam = () => {
         <span className="text-furia-white ml-2">TEAM</span>
       </h3>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-        {players.map((player, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {allPlayers.map((player, index) => (
           <div 
             key={index} 
-            className="transform transition-all duration-500 hover:z-10" 
+            className="transform transition-all duration-500 hover:-translate-y-1 hover:shadow-lg hover:shadow-amber-500/10" 
             style={{animationDelay: `${index * 100}ms`}}
           >
             <PlayerCard 
               name={player.name}
               nickname={player.nickname}
               role={player.role}
+              country={player.country}
+              countryCode={player.countryCode}
               image={player.image}
               stats={player.stats}
               team="kings"
+              rating={playerRatings[player.name]}
+              isWildcard={player.isWildcard}
+              mvpJogo={player.mvpJogo}
             />
           </div>
         ))}
