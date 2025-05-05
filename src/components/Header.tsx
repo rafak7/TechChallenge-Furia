@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Link, useNavigate } from 'react-router-dom';
-import { MessageSquare, Lock, LogOut, UserCircle, Gem } from 'lucide-react';
+import { MessageSquare, Lock, LogOut, Gem } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import {
   Tooltip,
@@ -195,16 +195,6 @@ const Header = () => {
                       )}
                     </div>
                   </div>
-                  
-                  <DropdownMenuSeparator className="bg-furia-gold/30 my-1" />
-                  
-                  <DropdownMenuItem 
-                    className="cursor-pointer hover:bg-furia-gold/20 focus:bg-furia-gold/20 rounded-md px-3 py-2 font-medium text-sm group transition-all duration-200"
-                    onClick={() => navigate('/perfil')}
-                  >
-                    <UserCircle className="h-4 w-4 mr-3 text-furia-gold group-hover:scale-110 transition-transform duration-200" />
-                    <span className="group-hover:text-furia-gold transition-colors duration-200">Meu Perfil</span>
-                  </DropdownMenuItem>
                   
                   <DropdownMenuSeparator className="bg-furia-gold/30 my-1" />
                   
