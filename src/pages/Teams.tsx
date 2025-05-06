@@ -99,18 +99,18 @@ const Teams = () => {
   // Renderizar página inicial quando nenhum time for selecionado
   const renderTeamsOverview = () => {
     return (
-      <div className="w-full py-10">
-        <div className="text-center mb-16">
-          <h2 className="text-5xl md:text-6xl font-rajdhani font-bold text-furia-gold mb-6">
+      <div className="w-full py-6 md:py-10">
+        <div className="text-center mb-8 md:mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-rajdhani font-bold text-furia-gold mb-4 md:mb-6">
             Conheça Nossas Equipes
           </h2>
-          <p className="text-xl text-furia-white/80 max-w-3xl mx-auto">
+          <p className="text-base md:text-xl text-furia-white/80 max-w-3xl mx-auto px-4 md:px-0">
             A FURIA é uma organização multi-gaming com times de ponta em diversos esports. 
             Selecione uma de nossas equipes acima para conhecer mais sobre nossos jogadores e suas conquistas.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mt-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10 mt-6 md:mt-12 px-4 md:px-0">
           {/* Card de CS */}
           <div 
             className="team-card relative overflow-hidden rounded-lg cursor-pointer transform transition-all duration-300 hover:scale-105 shadow-xl"
@@ -119,18 +119,18 @@ const Teams = () => {
             data-aos-delay="100"
           >
             <div 
-              className="aspect-[16/9] bg-cover bg-center h-[280px]" 
+              className="aspect-[16/9] bg-cover bg-center h-[220px] md:h-[280px]" 
               style={{ backgroundImage: `url(${teamBanners.cs})` }}
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90"></div>
-              <div className="absolute bottom-0 left-0 w-full p-8">
-                <h3 className="text-3xl font-bold text-furia-gold mb-3">Counter-Strike</h3>
-                <p className="text-furia-white/90 text-lg mb-6">
+              <div className="absolute bottom-0 left-0 w-full p-4 md:p-8">
+                <h3 className="text-2xl md:text-3xl font-bold text-furia-gold mb-2 md:mb-3">Counter-Strike</h3>
+                <p className="text-sm md:text-lg text-furia-white/90 mb-3 md:mb-6">
                   Nossa equipe principal com cinco títulos internacionais
                 </p>
-                <button className="text-sm uppercase tracking-wider font-bold bg-transparent text-furia-gold px-5 py-2.5 border border-furia-gold hover:bg-furia-gold hover:text-black transition-all duration-200 flex items-center group">
+                <button className="text-xs md:text-sm uppercase tracking-wider font-bold bg-transparent text-furia-gold px-4 py-2 md:px-5 md:py-2.5 border border-furia-gold hover:bg-furia-gold hover:text-black transition-all duration-200 flex items-center group">
                   Ver Time 
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 md:h-4 md:w-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </button>
@@ -146,18 +146,18 @@ const Teams = () => {
             data-aos-delay="200"
           >
             <div 
-              className="aspect-[16/9] bg-cover bg-center h-[280px]" 
+              className="aspect-[16/9] bg-cover bg-center h-[220px] md:h-[280px]" 
               style={{ backgroundImage: `url(${teamBanners.valorant})` }}
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90"></div>
-              <div className="absolute bottom-0 left-0 w-full p-8">
-                <h3 className="text-3xl font-bold text-furia-gold mb-3">Valorant</h3>
-                <p className="text-furia-white/90 text-lg mb-6">
+              <div className="absolute bottom-0 left-0 w-full p-4 md:p-8">
+                <h3 className="text-2xl md:text-3xl font-bold text-furia-gold mb-2 md:mb-3">Valorant</h3>
+                <p className="text-sm md:text-lg text-furia-white/90 mb-3 md:mb-6">
                   Nossos ágeis competidores no shooter tático da Riot Games
                 </p>
-                <button className="text-sm uppercase tracking-wider font-bold bg-transparent text-furia-gold px-5 py-2.5 border border-furia-gold hover:bg-furia-gold hover:text-black transition-all duration-200 flex items-center group">
+                <button className="text-xs md:text-sm uppercase tracking-wider font-bold bg-transparent text-furia-gold px-4 py-2 md:px-5 md:py-2.5 border border-furia-gold hover:bg-furia-gold hover:text-black transition-all duration-200 flex items-center group">
                   Ver Time 
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 md:h-4 md:w-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </button>
@@ -173,18 +173,18 @@ const Teams = () => {
             data-aos-delay="300"
           >
             <div 
-              className="aspect-[16/9] bg-cover bg-center h-[280px]" 
+              className="aspect-[16/9] bg-cover bg-center h-[220px] md:h-[280px]" 
               style={{ backgroundImage: `url(${teamBanners['kings-league']})` }}
             >
               <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-90"></div>
-              <div className="absolute bottom-0 left-0 w-full p-8">
-                <h3 className="text-3xl font-bold text-furia-gold mb-3">Kings League</h3>
-                <p className="text-furia-white/90 text-lg mb-6">
+              <div className="absolute bottom-0 left-0 w-full p-4 md:p-8">
+                <h3 className="text-2xl md:text-3xl font-bold text-furia-gold mb-2 md:mb-3">Kings League</h3>
+                <p className="text-sm md:text-lg text-furia-white/90 mb-3 md:mb-6">
                   Nossa nova equipe na revolucionária competição da Europa
                 </p>
-                <button className="text-sm uppercase tracking-wider font-bold bg-transparent text-furia-gold px-5 py-2.5 border border-furia-gold hover:bg-furia-gold hover:text-black transition-all duration-200 flex items-center group">
+                <button className="text-xs md:text-sm uppercase tracking-wider font-bold bg-transparent text-furia-gold px-4 py-2 md:px-5 md:py-2.5 border border-furia-gold hover:bg-furia-gold hover:text-black transition-all duration-200 flex items-center group">
                   Ver Time 
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 md:h-4 md:w-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </button>
@@ -200,28 +200,28 @@ const Teams = () => {
     <div className="flex flex-col min-h-screen bg-furia-black">
       <Header />
       
-      <main className="flex-grow">
+      <main className="flex-grow pt-20 md:pt-0">
         {/* Hero Banner */}
         {teamId ? (
           <div 
-            className="relative h-[45vh] md:h-[55vh] bg-cover bg-center" 
+            className="relative h-[35vh] sm:h-[40vh] md:h-[55vh] bg-cover bg-center" 
             style={{ 
               backgroundImage: `linear-gradient(rgba(0, 0, 0, ${teamId === 'cs' ? '0.4' : teamId === 'valorant' ? '0.45' : '0.5'}), rgba(0, 0, 0, 0.7)), url(${teamBanners[teamId] || '/images/banner_furia.jpg'})`,
               backgroundPosition: teamId === 'cs' ? 'center 15%' : teamId === 'valorant' ? 'center 30%' : teamId === 'kings-league' ? 'center 25%' : 'center center'
             }}
           >
             <div className="absolute inset-0 bg-gradient-to-t from-furia-black to-transparent opacity-90"></div>
-            <div className="container mx-auto px-4 h-full flex flex-col justify-end pb-16">
+            <div className="container mx-auto px-4 h-full flex flex-col justify-end pb-8 md:pb-16">
               <div className="relative z-10">
                 <h1 
-                  className="text-4xl md:text-6xl font-rajdhani font-bold text-furia-gold mb-2"
+                  className="text-3xl sm:text-4xl md:text-6xl font-rajdhani font-bold text-furia-gold mb-1 md:mb-2"
                   data-aos="fade-up" 
                   data-aos-delay="100"
                 >
                   {currentTeam?.title || 'Times FURIA'}
                 </h1>
                 <p 
-                  className="text-xl md:text-2xl text-furia-white font-semibold mb-4"
+                  className="text-lg sm:text-xl md:text-2xl text-furia-white font-semibold mb-2 md:mb-4"
                   data-aos="fade-up" 
                   data-aos-delay="200"
                 >
@@ -232,50 +232,50 @@ const Teams = () => {
           </div>
         ) : (
           <div 
-            className="relative h-[40vh] md:h-[70vh]" 
+            className="relative h-auto sm:h-[40vh] md:h-[70vh]" 
             style={{ 
               backgroundColor: '#000000',
               backgroundImage: 'none'
             }}
           >
-            <div className="container mx-auto px-4 h-full flex items-center justify-center">
+            <div className="container mx-auto px-4 h-full flex items-center justify-center py-8 md:py-0">
               {renderTeamsOverview()}
             </div>
           </div>
         )}
         
-        <div className="container mx-auto px-4 py-10">
+        <div className="container mx-auto px-4 py-6 md:py-10">
           {/* Exibir seletor de times apenas quando um time estiver selecionado */}
           {teamId && (
-            <div className="mb-12">
+            <div className="mb-8 md:mb-12">
               <TeamSelector activeTeam={activeTeam} />
             </div>
           )}
           
           {currentTeam ? (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-16 animate-fade-in">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10 mb-10 md:mb-16 animate-fade-in">
               <div className="md:col-span-2" data-aos="fade-up" data-aos-delay="100">
-                <h2 className="text-2xl font-bold text-furia-white mb-4">Sobre o Time</h2>
-                <p className="text-furia-white/80 text-lg mb-6">
+                <h2 className="text-xl md:text-2xl font-bold text-furia-white mb-3 md:mb-4">Sobre o Time</h2>
+                <p className="text-base md:text-lg text-furia-white/80 mb-4 md:mb-6">
                   {currentTeam.description}
                 </p>
-                <div className="bg-furia-darkgray border-l-4 border-furia-gold p-4">
-                  <p className="text-furia-white/90 italic">
+                <div className="bg-furia-darkgray border-l-4 border-furia-gold p-3 md:p-4">
+                  <p className="text-sm md:text-base text-furia-white/90 italic">
                     "A FURIA está construindo uma dinastia no {currentTeam.title}, com jogadores excepcionais e um estilo de jogo único. Estamos apenas começando nossa jornada."
                   </p>
-                  <p className="text-right text-furia-gold mt-2">- André Akkari, Co-Fundador</p>
+                  <p className="text-right text-furia-gold mt-2 text-sm md:text-base">- André Akkari, Co-Fundador</p>
                 </div>
               </div>
               
               <div data-aos="fade-up" data-aos-delay="200">
-                <h2 className="text-2xl font-bold text-furia-white mb-4">Conquistas</h2>
-                <ul className="space-y-3">
+                <h2 className="text-xl md:text-2xl font-bold text-furia-white mb-3 md:mb-4">Conquistas</h2>
+                <ul className="space-y-2 md:space-y-3">
                   {currentTeam.achievements.map((achievement, index) => (
                     <li key={index} className="flex items-start">
-                      <svg className="h-6 w-6 text-furia-gold flex-shrink-0 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="h-5 w-5 md:h-6 md:w-6 text-furia-gold flex-shrink-0 mr-2" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                       </svg>
-                      <span className="text-furia-white/80">{achievement}</span>
+                      <span className="text-sm md:text-base text-furia-white/80">{achievement}</span>
                     </li>
                   ))}
                 </ul>
@@ -287,7 +287,7 @@ const Teams = () => {
           
           {/* Team Players */}
           {teamId && (
-            <div className="mt-6" data-aos="fade-up" data-aos-delay="300">
+            <div className="mt-4 md:mt-6" data-aos="fade-up" data-aos-delay="300">
               {renderTeamContent()}
             </div>
           )}

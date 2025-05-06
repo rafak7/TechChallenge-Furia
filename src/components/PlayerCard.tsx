@@ -127,16 +127,16 @@ const PlayerCard = ({ name, nickname, role, country, countryCode, image, stats, 
   // Layout original para outros times
   return (
     <div className={`player-card w-full max-w-xs mx-auto`}>
-      <div className={`relative bg-gradient-to-b ${getBgClass()} p-6 ${isWildcard ? 'border-amber-500/30 border' : ''}`}>
+      <div className={`relative bg-gradient-to-b ${getBgClass()} p-4 sm:p-6 ${isWildcard ? 'border-amber-500/30 border' : ''}`}>
         {/* Ícone Wildcard */}
         {isWildcard && (
           <div className="absolute top-2 right-2 z-30">
             <div 
-              className="bg-amber-500 p-1.5 rounded-full shadow-lg shadow-amber-500/30 flex items-center justify-center cursor-pointer relative"
+              className="bg-amber-500 p-1 sm:p-1.5 rounded-full shadow-lg shadow-amber-500/30 flex items-center justify-center cursor-pointer relative"
               onMouseEnter={() => setShowTooltip(true)}
               onMouseLeave={() => setShowTooltip(false)}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
               {showTooltip && (
@@ -152,10 +152,10 @@ const PlayerCard = ({ name, nickname, role, country, countryCode, image, stats, 
         {/* Efeitos decorativos para Kings League */}
         {isKingsLeague && !isWildcard && (
           <>
-            <div className="absolute top-0 left-0 w-5 h-5 border-t-2 border-l-2 border-furia-gold/50"></div>
-            <div className="absolute top-0 right-0 w-5 h-5 border-t-2 border-r-2 border-furia-gold/50"></div>
-            <div className="absolute bottom-0 left-0 w-5 h-5 border-b-2 border-l-2 border-furia-gold/50"></div>
-            <div className="absolute bottom-0 right-0 w-5 h-5 border-b-2 border-r-2 border-furia-gold/50"></div>
+            <div className="absolute top-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-t-2 border-l-2 border-furia-gold/50"></div>
+            <div className="absolute top-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-t-2 border-r-2 border-furia-gold/50"></div>
+            <div className="absolute bottom-0 left-0 w-4 h-4 sm:w-5 sm:h-5 border-b-2 border-l-2 border-furia-gold/50"></div>
+            <div className="absolute bottom-0 right-0 w-4 h-4 sm:w-5 sm:h-5 border-b-2 border-r-2 border-furia-gold/50"></div>
           </>
         )}
         
@@ -169,7 +169,7 @@ const PlayerCard = ({ name, nickname, role, country, countryCode, image, stats, 
         )}
         
         {/* Player Image */}
-        <div className={`aspect-[3/4] overflow-hidden relative mb-4 ${isKingsLeague ? 'aspect-square' : ''}`}>
+        <div className={`aspect-[3/4] overflow-hidden relative mb-3 sm:mb-4 ${isKingsLeague ? 'aspect-square' : ''}`}>
           {!isWildcard && (
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
           )}
@@ -178,66 +178,66 @@ const PlayerCard = ({ name, nickname, role, country, countryCode, image, stats, 
             alt={nickname}
             className={`w-full h-full object-cover ${isKingsLeague ? 'object-center' : 'object-top'} transform hover:scale-105 transition-transform duration-700`}
           />
-          <div className="absolute bottom-0 left-0 w-full p-4 z-20">
+          <div className="absolute bottom-0 left-0 w-full p-3 sm:p-4 z-20">
             <span className={`${isKingsLeague ? 'text-white' : 'text-furia-gold'} bg-black/50 px-2 py-1 text-xs uppercase font-bold`}>{role}</span>
           </div>
           
           {/* País e bandeira - posicionada no topo à esquerda se tiver rating */}
           {!isKingsLeague && countryCode && (
-            <div className={`absolute top-0 ${rating !== undefined && rating !== null ? 'left-0' : 'right-0'} m-3 z-20`}>
-              <div className="flex items-center bg-black/70 px-2 py-1 rounded-sm">
+            <div className={`absolute top-0 ${rating !== undefined && rating !== null ? 'left-0' : 'right-0'} m-2 sm:m-3 z-20`}>
+              <div className="flex items-center bg-black/70 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-sm">
                 <img 
                   src={`https://flagcdn.com/16x12/${countryCode.toLowerCase()}.png`} 
                   alt={country} 
-                  className="mr-1 w-4 h-3"
+                  className="mr-1 w-3 h-2 sm:w-4 sm:h-3"
                 />
-                <span className="text-xs text-white">{country}</span>
+                <span className="text-[10px] sm:text-xs text-white">{country}</span>
               </div>
             </div>
           )}
 
           {/* Rating (para Kings League) */}
           {rating !== undefined && rating !== null && (
-            <div className="absolute top-0 right-0 m-3 z-20">
-              <div className={`flex items-center justify-center ${getRatingColor()} w-10 h-10 rounded-sm font-rajdhani`}>
-                <span className="text-base font-bold text-white">{rating}</span>
+            <div className="absolute top-0 right-0 m-2 sm:m-3 z-20">
+              <div className={`flex items-center justify-center ${getRatingColor()} w-8 h-8 sm:w-10 sm:h-10 rounded-sm font-rajdhani`}>
+                <span className="text-sm sm:text-base font-bold text-white">{rating}</span>
               </div>
             </div>
           )}
           
           {/* MVP Jogo (para Kings League wildcard) */}
           {mvpJogo && (
-            <div className="absolute bottom-12 left-4 z-20">
-              <div className="flex items-center bg-red-600 px-2 py-1 rounded-sm">
-                <span className="text-xs font-bold text-white mr-1">MVP Jogo</span>
-                <span className="text-xs font-bold text-white">{mvpJogo}</span>
+            <div className="absolute bottom-10 sm:bottom-12 left-3 sm:left-4 z-20">
+              <div className="flex items-center bg-red-600 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-sm">
+                <span className="text-[10px] sm:text-xs font-bold text-white mr-1">MVP Jogo</span>
+                <span className="text-[10px] sm:text-xs font-bold text-white">{mvpJogo}</span>
               </div>
             </div>
           )}
         </div>
 
         {/* Player Info */}
-        <div className={`mb-6 ${isKingsLeague ? 'text-center' : ''}`}>
-          <h3 className={`text-2xl font-bold text-furia-white mb-1 ${isKingsLeague ? 'font-rajdhani' : ''}`}>{nickname}</h3>
-          <p className="text-sm text-gray-400">
+        <div className={`mb-4 sm:mb-6 ${isKingsLeague ? 'text-center' : ''}`}>
+          <h3 className={`text-xl sm:text-2xl font-bold text-furia-white mb-0.5 sm:mb-1 ${isKingsLeague ? 'font-rajdhani' : ''}`}>{nickname}</h3>
+          <p className="text-xs sm:text-sm text-gray-400">
             {name}
-            {country && !countryCode && <span className="ml-2 text-xs text-gray-500">({country})</span>}
+            {country && !countryCode && <span className="ml-1 sm:ml-2 text-[10px] sm:text-xs text-gray-500">({country})</span>}
           </p>
         </div>
         
         {/* Stats */}
         {stats.length > 0 && (
-          <div className={`space-y-4 ${isKingsLeague ? 'grid grid-cols-2 gap-x-4 gap-y-2 space-y-0' : ''}`}>
+          <div className={`space-y-3 sm:space-y-4 ${isKingsLeague ? 'grid grid-cols-2 gap-x-3 sm:gap-x-4 gap-y-1.5 sm:gap-y-2 space-y-0' : ''}`}>
             {stats.map((stat, index) => (
               <div key={index} className={isKingsLeague ? 'flex justify-between items-center' : ''}>
                 {isKingsLeague ? (
                   <>
-                    <span className="text-xs uppercase font-bold">{stat.name}</span>
-                    <span className="text-furia-gold text-xs font-bold">{stat.value}</span>
+                    <span className="text-[10px] sm:text-xs uppercase font-bold">{stat.name}</span>
+                    <span className="text-furia-gold text-[10px] sm:text-xs font-bold">{stat.value}</span>
                   </>
                 ) : (
                   <>
-                    <div className="flex justify-between text-xs mb-1">
+                    <div className="flex justify-between text-[10px] sm:text-xs mb-0.5 sm:mb-1">
                       <span className="uppercase font-bold">{stat.name}</span>
                       <span className="text-furia-gold">{stat.value}{stat.max ? `/${stat.max}` : ''}</span>
                     </div>

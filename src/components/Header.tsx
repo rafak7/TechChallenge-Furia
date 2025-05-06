@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { Link, useNavigate } from 'react-router-dom';
-import { MessageSquare, Lock, LogOut, Gem } from 'lucide-react';
+import { MessageSquare, Lock, LogOut, Gem, Menu, X } from 'lucide-react';
 import { supabase } from '@/lib/supabase';
 import {
   Tooltip,
@@ -19,6 +19,7 @@ import {
 } from "./ui/dropdown-menu";
 import { toast } from 'sonner';
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
+import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 
 const Header = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -143,6 +144,7 @@ const Header = () => {
           </h1>
         </Link>
         
+        {/* Navegação para desktop */}
         <nav className="absolute left-1/2 transform -translate-x-1/2 hidden md:block">
           <ul className="flex space-x-10 font-rajdhani text-lg">
             <li><Link to="/" className="hover:text-furia-hover transition-colors font-medium">SOBRE</Link></li>
@@ -152,9 +154,92 @@ const Header = () => {
         </nav>
         
         <div className="flex items-center gap-3">
+          {/* Menu hamburguer para mobile */}
+          <Sheet>
+            <SheetTrigger asChild className="md:hidden">
+              <Button 
+                variant="outline" 
+                size="icon" 
+                className="border-furia-gold/50 rounded-full bg-black hover:bg-gray-900 p-2 hover:border-furia-gold hover:shadow-md hover:shadow-furia-gold/20 transition-all duration-300"
+              >
+                <Menu className="h-5 w-5 text-furia-gold" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="bg-black/95 backdrop-blur-md border-r border-furia-gold/30 text-white">
+              <div className="flex flex-col h-full">
+                <div className="flex items-center justify-center py-6 border-b border-furia-gold/20">
+                  <div className="w-12 h-12 flex items-center justify-center bg-black border-2 border-furia-gold rounded-full overflow-hidden">
+                    <img
+                      src="/images/logo_furia.png"
+                      alt="Logo FURIA"
+                      className="w-8 h-8 object-contain"
+                    />
+                  </div>
+                  <h2 className="ml-3 text-xl font-rajdhani font-bold text-furia-gold">
+                    FURIA
+                  </h2>
+                </div>
+                
+                <nav className="py-6">
+                  <ul className="space-y-4 font-rajdhani text-lg">
+                    <li className="px-4 py-2 hover:bg-furia-gold/10 rounded-md transition-colors">
+                      <Link to="/" className="block">SOBRE</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-furia-gold/10 rounded-md transition-colors">
+                      <Link to="/teams" className="block">TIMES</Link>
+                    </li>
+                    <li className="px-4 py-2 hover:bg-furia-gold/10 rounded-md transition-colors">
+                      <Link to="/fan" className="block">SEJA UM FÃ</Link>
+                    </li>
+                  </ul>
+                </nav>
+                
+                {isAuthenticated ? (
+                  <div className="mt-auto border-t border-furia-gold/20 pt-4 px-4">
+                    <Link to="/chat" className="block mb-4">
+                      <Button className="w-full bg-furia-gold text-black font-rajdhani uppercase tracking-wider py-3 font-bold transition-all duration-300 hover:bg-furia-hover shadow-md hover:shadow-furia-gold/50 flex items-center justify-center gap-2">
+                        <MessageSquare className="h-4 w-4" />
+                        Entrar no Chat
+                      </Button>
+                    </Link>
+                    <div className="flex items-center mb-4">
+                      <Avatar className="h-10 w-10">
+                        <AvatarImage src={userInfo?.avatar_url || undefined} alt={userInfo?.nome_completo || "Usuário"} />
+                        <AvatarFallback className={getAvatarColor(userInfo?.time_favorito)}>
+                          {getInitials(userInfo?.nome_completo)}
+                        </AvatarFallback>
+                      </Avatar>
+                      <div className="ml-3">
+                        <p className="font-medium text-furia-gold">{userInfo?.nome_completo || "Furioso"}</p>
+                        <p className="text-xs text-gray-400 truncate max-w-[180px]">{userInfo?.email}</p>
+                      </div>
+                    </div>
+                    <Button 
+                      variant="outline" 
+                      className="w-full border-red-900/50 text-red-400 hover:bg-red-900/30 hover:text-red-300 group"
+                      onClick={handleLogout}
+                    >
+                      <LogOut className="h-4 w-4 mr-2 group-hover:translate-x-[-2px] transition-transform duration-200" />
+                      Deslogar
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="mt-auto border-t border-furia-gold/20 pt-4 px-4">
+                    <Link to="/fan" className="block">
+                      <Button className="w-full bg-gray-700 text-gray-300 font-rajdhani uppercase tracking-wider py-3 font-bold transition-all duration-300 hover:bg-gray-600 flex items-center justify-center gap-2 opacity-80">
+                        <Lock className="h-4 w-4" />
+                        Entrar no Chat
+                      </Button>
+                    </Link>
+                  </div>
+                )}
+              </div>
+            </SheetContent>
+          </Sheet>
+          
           {isAuthenticated ? (
             <>
-              <Link to="/chat">
+              <Link to="/chat" className="hidden sm:block">
                 <Button className="bg-furia-gold text-black font-rajdhani uppercase tracking-wider px-6 py-5 font-bold transition-all duration-300 hover:bg-furia-hover hover:scale-105 shadow-md hover:shadow-furia-gold/50 animate-glow flex items-center gap-2">
                   <MessageSquare className="h-5 w-5" />
                   Entrar no Chat
@@ -212,7 +297,7 @@ const Header = () => {
             <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
-                  <Link to="/fan">
+                  <Link to="/fan" className="hidden sm:block">
                     <Button className="bg-gray-700 text-gray-300 font-rajdhani uppercase tracking-wider px-6 py-5 font-bold transition-all duration-300 hover:bg-gray-600 flex items-center gap-2 opacity-80">
                       <Lock className="h-5 w-5" />
                       Entrar no Chat

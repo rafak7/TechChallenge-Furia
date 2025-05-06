@@ -78,12 +78,12 @@ const CSTeam = () => {
 
   return (
     <div className="animate-fade-in">
-      <h3 className="text-2xl md:text-3xl font-rajdhani font-bold mb-8 text-center">
+      <h3 className="text-2xl md:text-3xl font-rajdhani font-bold mb-6 md:mb-8 text-center">
         <span className="text-furia-gold">CS</span>
         <span className="text-furia-white ml-2">TEAM</span>
       </h3>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8">
         {players.map((player, index) => (
           <div 
             key={index} 
